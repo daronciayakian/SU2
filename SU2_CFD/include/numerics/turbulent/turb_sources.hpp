@@ -305,6 +305,8 @@ private:
   alfa_2,
   beta_1,
   beta_2,
+  sigma_k_1,
+  sigma_k_2,
   sigma_omega_1,
   sigma_omega_2,
   beta_star,
@@ -320,12 +322,19 @@ private:
 
   bool incompressible;
   bool sustaining_terms;
+  bool implicit;
+  bool axisymmetric;
 
   /*!
    * \brief A virtual member. Get strain magnitude based on perturbed reynolds stress matrix
    * \param[in] turb_ke: turbulent kinetic energy of the node
    */
   void SetPerturbedStrainMag(su2double turb_ke);
+  
+  /*!
+   * \brief Add contribution due to axisymmetric formulation to 2D residual
+   */
+  void ResidualAxisymmetric(su2double beta_blended);
 
 public:
   /*!
